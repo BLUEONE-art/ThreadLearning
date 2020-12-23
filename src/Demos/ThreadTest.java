@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 
 // 练习Thread，实现多线程同步下载图片
-public class ThreadTest extends Thread {
+public class ThreadTest implements Runnable {
 
     private String url;  // 网络图片的URL地址
     private String name; // 保存的文件名
@@ -32,9 +32,12 @@ public class ThreadTest extends Thread {
         ThreadTest thread3 = new ThreadTest("https://img-blog.csdnimg.cn/20200314003602499.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTQzMDkxNA==,size_16,color_FFFFFF,t_70", "3.jpg");
 
         // 启动线程
-        thread1.start();
-        thread2.start();
-        thread3.start();
+        new Thread(thread1).start();
+        new Thread(thread2).start();
+        new Thread(thread3).start();
+//        thread1.start();
+//        thread2.start();
+//        thread3.start();
     }
 }
 
